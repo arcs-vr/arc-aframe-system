@@ -1,0 +1,39 @@
+{
+  "name": "arc-aframe-system",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "A-Frame system for controlling an A-Frame VR experience on a smartphone from a second device through MQTT.",
+  "repository": "https://github.com/arcs-vr/arc-aframe-system",
+  "author": "Barthy Bonhomme <post@barthy.koeln>",
+  "private": false,
+  "keywords": [
+    "aframe",
+    "aframe-controls",
+    "ARCS",
+    "MQTT",
+    "proxy",
+    "remote",
+    "socket",
+    "VR",
+    "WebXR",
+    "WebVR",
+    "websocket",
+    "WebRTC"
+  ],
+  "desktop": "index.js",
+  "main": "index.js",
+  "dependencies": {
+    "arc-events": "arcs-vr/arc-events",
+    "async-mqtt": "^2.4.2"
+  },
+  "devDependencies": {
+    "core-js": "^3",
+    "regenerator-runtime": "^0.13.5",
+    "eslint": "^7.5.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  }
+}
