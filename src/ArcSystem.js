@@ -1,6 +1,6 @@
-import { connectAsync } from 'async-mqtt'
 import { ArcTopics, parsePayload } from 'arc-events'
 import { EventDetailError } from './EventDetailError'
+import { connectAsync } from 'async-mqtt'
 
 /**
  * A-Frame Remote Controls component, that establishes a connection with a desktop/laptop
@@ -23,14 +23,19 @@ export const ArcSystem = {
     host: String,
 
     /**
-     * MQTT Port. Typically 1883 (or 8883 for MQTT over SSL)
+     * MQTT Port. Typically, 1883 (or 8883 for MQTT over SSL)
      */
     port: Number,
 
     /**
      * App name in case you use a single server for multiple apps
      */
-    app: String
+    app: String,
+
+    /**
+     * Optional path on the server
+     */
+    path: String
   },
 
   /**
@@ -44,6 +49,7 @@ export const ArcSystem = {
     this.paircode = ''
 
     /**
+     * Async MQTT client
      * Async MQTT client
      * @type {AsyncMqttClient}
      */
@@ -98,7 +104,7 @@ export const ArcSystem = {
   async arcsConnectListener (event) {
     this.el.removeEventListener('arcs-connect', this.arcsConnectListener)
 
-    if (!('deviceName' in event.detail)) {
+    if (!Object.prototype.hasOwnProperty.call(event.detail, 'deviceName')) {
       throw new EventDetailError('arcs-connect', 'deviceName', 'string')
     }
 
