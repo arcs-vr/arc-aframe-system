@@ -103,6 +103,7 @@ export const ArcSystem = {
    */
   async arcsConnectListener (event) {
     this.el.removeEventListener('arcs-connect', this.arcsConnectListener)
+    window.addEventListener('beforeunload', this.arcsDisconnectListener)
 
     if (!Object.prototype.hasOwnProperty.call(event.detail, 'deviceName')) {
       throw new EventDetailError('arcs-connect', 'deviceName', 'string')
@@ -141,6 +142,7 @@ export const ArcSystem = {
    * */
   async arcsDisconnectListener () {
     this.el.removeEventListener('arcs-disconnect', this.arcsDisconnectListener)
+    window.removeEventListener('beforeunload', this.arcsDisconnectListener)
 
     await this.mqttClient.unsubscribe(this.paircode + '/' + ArcTopics.DATA)
     await this.mqttClient.unsubscribe(this.paircode + '/' + ArcTopics.STATUS)
