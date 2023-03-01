@@ -209,7 +209,9 @@ export const ArcSystem = {
    * @param {string} type
    */
   activateEvents (type) {
+    console.debug('Activate event: ' + type)
     if (!this.mqttClient || this.mqttClient.connected === false) {
+      console.debug('MQTT not connected.')
       return
     }
 
@@ -242,7 +244,9 @@ export const ArcSystem = {
    * @param {string} type
    */
   deactivateEvents (type) {
+    console.debug('Deactivate event: ' + type)
     if (!this.mqttClient || this.mqttClient.connected === false) {
+      console.debug('MQTT not connected.')
       return
     }
 
