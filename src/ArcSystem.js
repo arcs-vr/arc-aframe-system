@@ -116,7 +116,7 @@ export const ArcSystem = {
 
     this.paircode = this.data.app + '/' + event.detail.deviceName.replace(' ', '-').toLowerCase()
 
-    this.mqttClient = await connectAsync(`${this.data.protocol}://${this.data.host}:${this.data.port}/${this.data.path ?? ''}`)
+    this.mqttClient = await connectAsync(`${this.data.protocol}://${this.data.host}:${this.data.port}${this.data.path ?? ''}`)
     this.mqttClient.on('message', this.messageListener)
 
     await this.mqttClient.subscribe(this.paircode + '/' + ArcTopics.STATUS)
