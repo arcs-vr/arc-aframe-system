@@ -28,6 +28,11 @@ export const ArcSystem = {
     port: Number,
 
     /**
+    * MQTT path
+    */
+    path: String,
+
+    /**
      * App name in case you use a single server for multiple apps
      */
     app: String,
@@ -111,7 +116,7 @@ export const ArcSystem = {
 
     this.paircode = this.data.app + '/' + event.detail.deviceName.replace(' ', '-').toLowerCase()
 
-    this.mqttClient = await connectAsync(`${this.data.protocol}://${this.data.host}:${this.data.port}`)
+    this.mqttClient = await connectAsync(`${this.data.protocol}://${this.data.host}:${this.data.port}/${this.data.path ?? ''}`)
     this.mqttClient.on('message', this.messageListener)
 
     await this.mqttClient.subscribe(this.paircode + '/' + ArcTopics.STATUS)
