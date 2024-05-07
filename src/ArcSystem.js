@@ -26,12 +26,7 @@ export const ArcSystem = {
      * MQTT Port. Typically, 1883 (or 8883 for MQTT over SSL)
      */
     port: Number,
-
-    /**
-    * MQTT path
-    */
-    path: String,
-
+    
     /**
      * App name in case you use a single server for multiple apps
      */
